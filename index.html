@@ -6991,6 +6991,22 @@
                     color: #fff;
                 }
 
+                .ebs-subtab-input {
+                    border: none;
+                    background: transparent;
+                    font-size: 13px;
+                    color: inherit;
+                    font-weight: inherit;
+                    width: 70px;
+                    padding: 0;
+                    outline: none;
+                    cursor: text;
+                }
+
+                .ebs-subtab-item.active .ebs-subtab-input {
+                    font-weight: 500;
+                }
+
                 .ebs-setting-panel {
                     display: none;
                 }
@@ -7106,6 +7122,256 @@
                 .ebs-selection-code {
                     font-size: 12px;
                     color: #999;
+                }
+
+                /* Task Process Modal Specific Styles */
+                .ebs-process-summary-grid {
+                    background: #f8f9fb;
+                    border: 1px solid #eef0f2;
+                    border-radius: 8px;
+                    padding: 16px;
+                    margin-top: 20px;
+                }
+
+                .ebs-summary-waiver-header {
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: #ff4d4f;
+                    margin-bottom: 12px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .ebs-summary-comparison {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 24px;
+                }
+
+                .ebs-comparison-group {
+                    padding: 12px;
+                    background: #fff;
+                    border-radius: 6px;
+                    border: 1px solid #e8e8e8;
+                }
+
+                .ebs-group-title {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #555;
+                    margin-bottom: 10px;
+                    padding-bottom: 8px;
+                    border-bottom: 1px dashed #eee;
+                }
+
+                .ebs-stat-row {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 6px;
+                    font-size: 13px;
+                }
+
+                .ebs-stat-label {
+                    color: #8c8c8c;
+                }
+
+                .ebs-stat-value {
+                    font-weight: 500;
+                    color: #333;
+                }
+
+                .ebs-opinion-section {
+                    margin-top: 20px;
+                }
+
+                .ebs-opinion-label {
+                    display: block;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                    color: #333;
+                }
+
+                .ebs-opinion-textarea {
+                    width: 100%;
+                    height: 80px;
+                    border: 1px solid #d9d9d9;
+                    border-radius: 4px;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    outline: none;
+                    resize: none;
+                    transition: all 0.3s;
+                }
+
+                .ebs-opinion-textarea:focus {
+                    border-color: #1677ff;
+                    box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.1);
+                }
+
+                /* Timeline Styles */
+                .ebs-timeline-section {
+                    margin-top: 24px;
+                    padding-top: 24px;
+                    border-top: 1px solid #f0f0f0;
+                }
+
+                .ebs-timeline-title {
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .ebs-timeline-title::before {
+                    content: "";
+                    width: 4px;
+                    height: 16px;
+                    background: #1677ff;
+                    border-radius: 2px;
+                }
+
+                .ebs-timeline-container {
+                    padding-left: 40px;
+                }
+
+                .ebs-timeline-item {
+                    position: relative;
+                    padding-bottom: 24px;
+                }
+
+                .ebs-timeline-item:last-child {
+                    padding-bottom: 0;
+                }
+
+                .ebs-timeline-item::before {
+                    content: "";
+                    position: absolute;
+                    left: -22px;
+                    top: 36px;
+                    bottom: 0;
+                    width: 2px;
+                    background: #f0f0f0;
+                }
+
+                .ebs-timeline-item:last-child::before {
+                    display: none;
+                }
+
+                .ebs-timeline-icon {
+                    position: absolute;
+                    left: -40px;
+                    top: 0;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 16px;
+                    font-weight: 600;
+                    z-index: 1;
+                }
+
+                .ebs-icon-blue {
+                    background: #e6f4ff;
+                    color: #1677ff;
+                }
+
+                .ebs-icon-orange {
+                    background: #fff7e6;
+                    color: #fa8c16;
+                }
+
+                .ebs-icon-gray {
+                    background: #f5f5f5;
+                    color: #bfbfbf;
+                    font-size: 18px;
+                }
+
+                .ebs-timeline-content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                }
+
+                .ebs-timeline-info {
+                    flex: 1;
+                }
+
+                .ebs-timeline-role {
+                    font-size: 13px;
+                    color: #8c8c8c;
+                    margin-bottom: 4px;
+                }
+
+                .ebs-timeline-name {
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: #333;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+
+                .ebs-tag-processing {
+                    font-size: 12px;
+                    background: #fff7e6;
+                    color: #fa8c16;
+                    border: 1px solid #ffd591;
+                    padding: 0 8px;
+                    border-radius: 2px;
+                    font-weight: normal;
+                }
+
+                .ebs-timeline-time {
+                    font-size: 13px;
+                    color: #bfbfbf;
+                }
+
+                .ebs-modal-footer-sections {
+                    display: flex;
+                    gap: 40px;
+                    margin-top: 24px;
+                    padding-top: 24px;
+                    border-top: 1px solid #f0f0f0;
+                }
+
+                .ebs-timeline-section {
+                    width: 320px;
+                    margin-top: 0;
+                    padding-top: 0;
+                    border-top: none;
+                }
+
+                /* FBX Copy Preview Styles */
+                .fbx-copy-preview {
+                    margin-top: 15px;
+                    padding: 12px;
+                    background: #f8f9fb;
+                    border: 1px dashed #d9d9d9;
+                    border-radius: 4px;
+                    max-height: 200px;
+                    overflow-y: auto;
+                }
+
+                .fbx-preview-title {
+                    font-size: 12px;
+                    color: #8c8c8c;
+                    margin-bottom: 8px;
+                    font-weight: 600;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .fbx-preview-content {
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: 12px;
+                    color: #595959;
+                    white-space: pre-wrap;
+                    line-height: 1.6;
                 }
             </style>
 
@@ -10131,9 +10397,7 @@
                 <button class="ebs-btn-icon ebs-btn-rm-cond">-</button>
             `;
 
-            if (operator === '≠' || cond === null) {
-                row.querySelector('option[value="≠"]').textContent = '≠';
-            }
+
 
             const fieldSelect = row.querySelector('.ebs-cond-field');
             const msContainer = row.querySelector('.ebs-multi-select-container');
@@ -10150,16 +10414,24 @@
                 const ops = opSelect.querySelectorAll('option');
 
                 if (numericFields.includes(fld)) {
-                    ops.forEach(opt => opt.style.display = 'block');
+                    ops.forEach(opt => {
+                        opt.style.display = 'block';
+                        if (opt.value === '=') opt.textContent = '=';
+                        if (opt.value === '≠') opt.textContent = '≠';
+                    });
                     msContainer.style.display = 'none';
                     valInput.style.display = 'block';
                     valInput.value = Array.isArray(initialVals) ? initialVals.join(',') : (initialVals || '');
                 } else {
                     ops.forEach(opt => {
-                        if (opt.value !== '=' && opt.value !== '≠' && opt.value !== '') opt.style.display = 'none';
-                        else opt.style.display = 'block';
+                        if (opt.value === '=') {
+                            opt.textContent = '任意';
+                            opt.style.display = 'block';
+                        } else {
+                            opt.style.display = 'none';
+                        }
                     });
-                    if (opSelect.value !== '=' && opSelect.value !== '≠' && opSelect.value !== '') {
+                    if (opSelect.value !== '=') {
                         opSelect.value = '=';
                     }
                     msContainer.style.display = 'block';
@@ -10707,13 +10979,14 @@
             settingCounter++;
             const id = settingCounter;
             const numberMap = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
-            const title = `设置${id <= 10 ? numberMap[id - 1] : id}`;
+            const defaultTitle = `设置${id <= 10 ? numberMap[id - 1] : id}`;
+            const title = (data && data.name) ? data.name : defaultTitle;
 
             const tab = document.createElement('div');
             tab.className = 'ebs-subtab-item';
             tab.dataset.settingId = id;
             tab.innerHTML = `
-                <span>${title}</span>
+                <input type="text" class="ebs-subtab-input" value="${title}" onclick="event.stopPropagation(); this.closest('.ebs-subtab-item').click();" />
                 ${id > 1 ? '<span class="ebs-subtab-remove">×</span>' : ''}
             `;
             tab.onclick = (e) => {
@@ -11036,10 +11309,15 @@
             const exceptionSettings = [];
             const panels = document.querySelectorAll('.ebs-setting-panel');
             panels.forEach(panel => {
+                const id = panel.dataset.settingId;
+                const tab = document.querySelector(`.ebs-subtab-item[data-setting-id="${id}"]`);
+                const name = tab ? tab.querySelector('.ebs-subtab-input').value : ('设置' + id);
+
                 const channels = JSON.parse(panel.querySelector('.ebs-channel-wrapper-sub').dataset.value || '[]');
                 const customers = JSON.parse(panel.querySelector('.ebs-customer-wrapper-sub').dataset.value || '[]');
                 const plans = collectPlansFromWrapper(panel.querySelector('.ebs-plans-wrapper-sub'));
                 exceptionSettings.push({
+                    name: name,
                     channels: { values: channels },
                     customers: { values: customers },
                     plans: plans
@@ -12069,8 +12347,7 @@
             }).reverse().join('');
         }
 
-        // --- Task Center Detail View Logic ---
-        const processDetailTbody = document.getElementById('process-detail-tbody');
+        // --- Task Center Detail View Logic (Modal Based) ---
         let currentWaiverId = null;
 
         window.openProcessView = function (id, isReadOnly = false) {
@@ -12078,56 +12355,128 @@
             const app = waiverApplications.find(a => a.id === id);
             if (!app) return;
 
-            // Fill Header Info
-            document.getElementById('detail-app-id').textContent = `WAV-${app.id}`;
+            const modal = document.getElementById('modal-process-task');
+            const tbody = document.getElementById('modal-process-tbody');
+            
+            // Header
+            document.getElementById('modal-process-order-no').textContent = app.orderNo || 'SO24041201';
 
-            // Control Buttons
-            const actionBtns = document.getElementById('process-action-buttons');
-            actionBtns.style.display = isReadOnly ? 'none' : 'flex';
+            // Action Buttons
+            const actions = document.getElementById('modal-process-actions');
+            const approveBtn = document.getElementById('btn-modal-approve-task');
+            const rejectBtn = document.getElementById('btn-modal-reject-task');
+            
+            if (isReadOnly) {
+                approveBtn.style.display = 'none';
+                rejectBtn.style.display = 'none';
+                document.getElementById('modal-process-opinion').disabled = true;
+                document.getElementById('modal-process-opinion').value = '审核意见已同步至详情';
+            } else {
+                approveBtn.style.display = 'inline-flex';
+                rejectBtn.style.display = 'inline-flex';
+                document.getElementById('modal-process-opinion').disabled = false;
+                document.getElementById('modal-process-opinion').value = '';
+            }
 
-            // Render Detail Table (Mock 13 columns for the request)
-            processDetailTbody.innerHTML = `
+            // Table Body
+            tbody.innerHTML = `
                 <tr style="border-bottom: 1px solid #f0f0f0;">
-                    <td style="padding: 12px; color: #1890ff;">SO24041201</td>
-                    <td style="padding: 12px;">演示结算单位A</td>
-                    <td style="padding: 12px;">2024-04-20</td>
-                    <td style="padding: 12px;">2024-04-18</td>
-                    <td style="padding: 12px;">${app.feeType}</td>
-                    <td style="padding: 12px;">CNY</td>
-                    <td style="padding: 12px; text-align: right;">1.00</td>
-                    <td style="padding: 12px; text-align: right;">${app.amount}</td>
-                    <td style="padding: 12px; text-align: right; color: #595959;">￥850.50</td>
-                    <td style="padding: 12px; text-align: right; color: #595959;">17.01%</td>
-                    <td style="padding: 12px; text-align: right; color: #52c41a; font-weight: 500;">￥${(850.50 - parseFloat(app.amount)).toFixed(2)}</td>
-                    <td style="padding: 12px; text-align: right; color: #52c41a;">${((850.5 - parseFloat(app.amount)) / 5000 * 100).toFixed(2)}%</td>
-                    <td style="padding: 12px;">张三 (业务员)</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #f0f0f0; background: #fafafa;">
-                    <td colspan="13" style="padding: 12px; color: #8c8c8c;">
-                        <span style="font-weight: 500; color: #262626;">申请原因：</span>${app.reason}
-                    </td>
+                    <td style="padding: 12px; border: 1px solid #f0f0f0; text-align: center;">1</td>
+                    <td style="padding: 12px; border: 1px solid #f0f0f0;">${app.feeType}</td>
+                    <td style="padding: 12px; border: 1px solid #f0f0f0; text-align: center;">CNY</td>
+                    <td style="padding: 12px; border: 1px solid #f0f0f0; text-align: right;">1.00</td>
+                    <td style="padding: 12px; border: 1px solid #f0f0f0; text-align: right;">${app.amount}</td>
+                    <td style="padding: 12px; border: 1px solid #f0f0f0; text-align: right; font-weight: 500;">￥${app.amount}</td>
                 </tr>
             `;
 
-            switchView(viewTaskProcess, 'menu-task-center');
+            // Summary Calculations
+            const waiverAmount = parseFloat(app.amount);
+            const incomeBase = 5000; // Mock total income
+            
+            // Pre-Waiver
+            const preCompProfit = 850.50;
+            const preCompMargin = (preCompProfit / incomeBase * 100).toFixed(2);
+            const preSalesProfit = preCompProfit * 0.8;
+            const preSalesMargin = (preSalesProfit / incomeBase * 100).toFixed(2);
+
+            // Post-Waiver
+            const postCompProfit = preCompProfit - waiverAmount;
+            const postCompMargin = (postCompProfit / incomeBase * 100).toFixed(2);
+            const postSalesProfit = preSalesProfit - waiverAmount;
+            const postSalesMargin = (postSalesProfit / incomeBase * 100).toFixed(2);
+
+            // Fill Summary
+            document.getElementById('summary-waiver-total').textContent = `￥${waiverAmount.toFixed(2)}`;
+            
+            document.getElementById('pre-company-profit').textContent = `￥${preCompProfit.toFixed(2)}`;
+            document.getElementById('pre-company-margin').textContent = `${preCompMargin}%`;
+            document.getElementById('pre-sales-profit').textContent = `￥${preSalesProfit.toFixed(2)}`;
+            document.getElementById('pre-sales-margin').textContent = `${preSalesMargin}%`;
+
+            document.getElementById('post-company-profit').textContent = `￥${postCompProfit.toFixed(2)}`;
+            document.getElementById('post-company-margin').textContent = `${postCompMargin}%`;
+            document.getElementById('post-sales-profit').textContent = `￥${postSalesProfit.toFixed(2)}`;
+            document.getElementById('post-sales-margin').textContent = `${postSalesMargin}%`;
+
+            // Timeline Rendering
+            const timeline = document.getElementById('modal-process-timeline');
+            const todayLong = new Date().toLocaleString('zh-CN', { hour12: false });
+            const todayShort = todayLong.split(' ')[0].substring(5) + ' ' + todayLong.split(' ')[1].substring(0, 5);
+
+            timeline.innerHTML = `
+                <div class="ebs-timeline-item">
+                    <div class="ebs-timeline-icon ebs-icon-blue">当</div>
+                    <div class="ebs-timeline-content">
+                        <div class="ebs-timeline-info">
+                            <div class="ebs-timeline-role">发起人</div>
+                            <div class="ebs-timeline-name">${app.applicant}</div>
+                        </div>
+                        <div class="ebs-timeline-time">${app.time || todayLong}</div>
+                    </div>
+                </div>
+                <div class="ebs-timeline-item">
+                    <div class="ebs-timeline-icon ebs-icon-orange">财</div>
+                    <div class="ebs-timeline-content">
+                        <div class="ebs-timeline-info">
+                            <div class="ebs-timeline-role">放货</div>
+                            <div class="ebs-timeline-name">财务主管 <span class="ebs-tag-processing">处理中</span></div>
+                        </div>
+                        <div class="ebs-timeline-time">${todayShort}</div>
+                    </div>
+                </div>
+                <div class="ebs-timeline-item">
+                    <div class="ebs-timeline-icon ebs-icon-gray">🕒</div>
+                    <div class="ebs-timeline-content">
+                        <div class="ebs-timeline-info">
+                            <div class="ebs-timeline-name" style="color: #bfbfbf; font-weight: normal;">审批进行中</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Open Modal
+            modal.classList.add('active');
         };
 
-        document.getElementById('btn-back-to-task')?.addEventListener('click', () => {
-            switchView(viewTaskCenter, 'menu-task-center');
-            renderTaskCenterTable();
-        });
+        const closeProcessModal = () => {
+            document.getElementById('modal-process-task').classList.remove('active');
+        };
 
-        document.getElementById('btn-approve-task')?.addEventListener('click', () => {
+        document.getElementById('close-process-task-modal')?.addEventListener('click', closeProcessModal);
+        document.getElementById('btn-cancel-process-task')?.addEventListener('click', closeProcessModal);
+
+        document.getElementById('btn-modal-approve-task')?.addEventListener('click', () => {
             if (currentWaiverId) {
                 processWaiver(currentWaiverId, '已批准');
-                switchView(viewTaskCenter, 'menu-task-center');
+                closeProcessModal();
             }
         });
 
-        document.getElementById('btn-reject-task')?.addEventListener('click', () => {
+        document.getElementById('btn-modal-reject-task')?.addEventListener('click', () => {
             if (currentWaiverId) {
                 processWaiver(currentWaiverId, '已驳回');
-                switchView(viewTaskCenter, 'menu-task-center');
+                closeProcessModal();
             }
         });
 
@@ -12983,6 +13332,7 @@
             if (!modal || !listEl) return;
 
             titleEl.textContent = type === 'push' ? '选择推送列' : '选择复制列';
+            document.getElementById('fbx-column-preview-wrap').style.display = type === 'copy' ? 'block' : 'none';
 
             const table = document.querySelector('#view-fbx-orders table');
             const headers = Array.from(table.querySelectorAll('thead th')).slice(2, -1);
@@ -12992,15 +13342,41 @@
                 const name = th.textContent.trim();
                 const label = document.createElement('label');
                 label.style.cssText = 'cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 4px;';
-                label.innerHTML = `<input type="checkbox" class="fbx-col-cb" data-index="${i + 2}" checked> ${name}`;
+                label.innerHTML = `<input type="checkbox" class="fbx-col-cb" data-index="${i + 2}" onchange="updateFbxColumnPreview()" checked> ${name}`;
                 listEl.appendChild(label);
             });
 
+            updateFbxColumnPreview();
             modal.classList.add('active');
+        };
+
+        window.updateFbxColumnPreview = () => {
+            const previewEl = document.getElementById('fbx-column-preview-content');
+            if (!previewEl || !fbxCurrentAction || fbxCurrentAction.type !== 'copy') return;
+
+            const selectedCols = Array.from(document.querySelectorAll('.fbx-col-cb:checked')).map(cb => ({
+                index: parseInt(cb.dataset.index),
+                name: cb.parentElement.textContent.trim()
+            }));
+
+            if (selectedCols.length === 0) {
+                previewEl.textContent = '请至少选择一列以预览示例...';
+                return;
+            }
+
+            const tr = fbxCurrentAction.rows[0]; // Sample the first row
+            let previewText = '';
+            selectedCols.forEach(col => {
+                const cellContent = tr.cells[col.index]?.textContent.trim() || '-';
+                previewText += `${col.name}: ${cellContent}\n`;
+            });
+
+            previewEl.textContent = previewText;
         };
 
         document.getElementById('fbx-col-select-all')?.addEventListener('change', (e) => {
             document.querySelectorAll('.fbx-col-cb').forEach(cb => cb.checked = e.target.checked);
+            updateFbxColumnPreview();
         });
 
         document.getElementById('btn-fbx-column-confirm')?.addEventListener('click', () => {
@@ -13153,6 +13529,98 @@
             if (modal) modal.style.display = 'none';
         };
     </script>
+
+    <!-- Modal: Task Process -->
+    <div id="modal-process-task" class="ebs-selection-modal-overlay">
+        <div class="ebs-selection-modal" style="width: 1000px; max-height: 90vh;">
+            <div class="ebs-selection-modal-header">
+                <span class="ebs-selection-modal-title">任务处理 - 工作单号: <span id="modal-process-order-no" style="color: #1677ff;"></span></span>
+                <span class="close-modal" id="close-process-task-modal" style="cursor: pointer; font-size: 20px;">&times;</span>
+            </div>
+            <div class="ebs-selection-modal-content">
+                <table class="table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                    <thead style="background: #f5f5f5;">
+                        <tr>
+                            <th style="padding: 12px; border: 1px solid #f0f0f0;">序号</th>
+                            <th style="padding: 12px; border: 1px solid #f0f0f0;">费用名称</th>
+                            <th style="padding: 12px; border: 1px solid #f0f0f0;">币制</th>
+                            <th style="padding: 12px; border: 1px solid #f0f0f0;">数量</th>
+                            <th style="padding: 12px; border: 1px solid #f0f0f0;">单价</th>
+                            <th style="padding: 12px; border: 1px solid #f0f0f0;">金额</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-process-tbody"></tbody>
+                </table>
+
+                <div class="ebs-process-summary-grid">
+                    <div class="ebs-summary-waiver-header">
+                        减免金额合计: <span id="summary-waiver-total" style="font-size: 18px;">￥0.00</span>
+                    </div>
+                    <div class="ebs-summary-comparison">
+                        <div class="ebs-comparison-group">
+                            <div class="ebs-group-title">减免前 (Pre-Waiver)</div>
+                            <div class="ebs-stat-row">
+                                <span class="ebs-stat-label">公司利润:</span>
+                                <span class="ebs-stat-value" id="pre-company-profit">￥0.00</span>
+                            </div>
+                            <div class="ebs-stat-row">
+                                <span class="ebs-stat-label">公司毛利率:</span>
+                                <span class="ebs-stat-value" id="pre-company-margin">0.00%</span>
+                            </div>
+                            <div class="ebs-stat-row">
+                                <span class="ebs-stat-label">业务员利润:</span>
+                                <span class="ebs-stat-value" id="pre-sales-profit">￥0.00</span>
+                            </div>
+                            <div class="ebs-stat-row">
+                                <span class="ebs-stat-label">业务员毛利率:</span>
+                                <span class="ebs-stat-value" id="pre-sales-margin">0.00%</span>
+                            </div>
+                        </div>
+                        <div class="ebs-comparison-group">
+                            <div class="ebs-group-title" style="color: #52c41a;">减免后 (Post-Waiver)</div>
+                            <div class="ebs-stat-row">
+                                <span class="ebs-stat-label">公司利润:</span>
+                                <span class="ebs-stat-value" id="post-company-profit" style="color: #52c41a; font-weight: bold;">￥0.00</span>
+                            </div>
+                            <div class="ebs-stat-row">
+                                <span class="ebs-stat-label">公司毛利率:</span>
+                                <span class="ebs-stat-value" id="post-company-margin" style="color: #52c41a; font-weight: bold;">0.00%</span>
+                            </div>
+                            <div class="ebs-stat-row">
+                                <span class="ebs-stat-label">业务员利润:</span>
+                                <span class="ebs-stat-value" id="post-sales-profit" style="color: #52c41a; font-weight: bold;">￥0.00</span>
+                            </div>
+                            <div class="ebs-stat-row">
+                                <span class="ebs-stat-label">业务员毛利率:</span>
+                                <span class="ebs-stat-value" id="post-sales-margin" style="color: #52c41a; font-weight: bold;">0.00%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ebs-modal-footer-sections">
+                    <!-- Left: Approval Progress Timeline -->
+                    <div class="ebs-timeline-section">
+                        <div class="ebs-timeline-title">审批进程</div>
+                        <div class="ebs-timeline-container" id="modal-process-timeline">
+                            <!-- Timeline items will be rendered here -->
+                        </div>
+                    </div>
+
+                    <!-- Right: Review Opinion -->
+                    <div class="ebs-opinion-section">
+                        <label class="ebs-opinion-label">审核意见</label>
+                        <textarea id="modal-process-opinion" class="ebs-opinion-textarea" placeholder="请输入审核意见..." style="height: 180px;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="ebs-selection-modal-footer" id="modal-process-actions">
+                <button class="ebs-btn ebs-btn-default" id="btn-cancel-process-task">取消</button>
+                <button class="ebs-btn" id="btn-modal-reject-task" style="background: #fff2f0; border-color: #ffccc7; color: #ff4d4f;">拒绝</button>
+                <button class="ebs-btn ebs-btn-primary" id="btn-modal-approve-task">同意</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal: Premium Calculation -->
     <div id="modal-calc-premium"
@@ -13441,6 +13909,16 @@
                 <div id="fbx-column-checkbox-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                     <!-- Checkboxes inserted via JS -->
                 </div>
+
+                <div class="fbx-copy-preview" id="fbx-column-preview-wrap">
+                    <div class="fbx-preview-title">
+                        <span>复制示例 (Preview)</span>
+                        <span style="font-weight: normal; color: #bfbfbf;">* 仅展示首条记录</span>
+                    </div>
+                    <div class="fbx-preview-content" id="fbx-column-preview-content">
+                        <!-- Preview content here -->
+                    </div>
+                </div>
             </div>
             <div class="ebs-selection-modal-footer">
                 <button class="ebs-btn ebs-btn-default" onclick="closeFbxColumnModal()">取消</button>
@@ -13464,6 +13942,7 @@
                             <th style="padding: 12px; text-align: left;">操作内容</th>
                             <th style="padding: 12px; text-align: left;">操作时间</th>
                             <th style="padding: 12px; text-align: left;">操作人</th>
+                            <th style="padding: 12px; text-align: left;">操作</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -13472,12 +13951,18 @@
                             <td style="padding: 12px;">生成快递面单 (UPS)</td>
                             <td style="padding: 12px;">2024-04-12 14:30:22</td>
                             <td style="padding: 12px;">管理员</td>
+                            <td style="padding: 12px;">
+                                <button class="ebs-btn" style="padding: 4px 8px; font-size: 12px; background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7;" onclick="alert('打单已取消')">取消打单</button>
+                            </td>
                         </tr>
                         <tr style="border-bottom: 1px solid #f0f0f0;">
                             <td style="padding: 12px;">ORD20240408001</td>
                             <td style="padding: 12px;">打印标签</td>
                             <td style="padding: 12px;">2024-04-12 14:31:05</td>
                             <td style="padding: 12px;">管理员</td>
+                            <td style="padding: 12px;">
+                                <button class="ebs-btn" style="padding: 4px 8px; font-size: 12px; background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7;" onclick="alert('打单已取消')">取消打单</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
