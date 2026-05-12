@@ -5954,16 +5954,16 @@
 
             <!-- Section: Surcharges (Moved here) -->
             <div class="fba-section-card">
-                <div class="fba-section-title">附加费</div>
+                <div class="fba-section-title">手动附加费</div>
                 <div class="fba-form-grid" style="grid-template-columns: repeat(4, 1fr);">
                     <div class="fba-field"
                         style="grid-column: span 4; margin-top: 12px; border-top: 1px solid #f9f9f9; padding-top: 12px;">
                         <div style="display: flex; align-items: center; gap: 12px;">
-                            <span style="font-size: 12px; font-weight: 500; color: #595959;">附加费列表</span>
+                            
                             <div style="position: relative; display: flex; align-items: center; gap: 8px;">
                                 <button class="fbx-btn" id="btn-add-fba-surcharge"
                                     style="height: 32px; color: #1890ff; padding: 0 12px; border-color: #91d5ff; font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 4px;">
-                                    <span>+</span> <span style="font-size: 13px; font-weight: normal;">添加附加费</span>
+                                    <span>+</span> <span style="font-size: 13px; font-weight: normal;">新增</span>
                                 </button>
                             </div>
                         </div>
@@ -7420,6 +7420,23 @@
                             <span class="ebs-label">附加费条款</span>
                             <input type="text" class="ebs-input" id="ebs-terms" placeholder="请输入限制条款"
                                 style="max-width: none; width: 100%;">
+                        </div>
+                    </div>
+                    <div class="ebs-row">
+                        <div class="ebs-form-item">
+                            <span class="ebs-label">触发方式</span>
+                            <div style="display: flex; gap: 20px; align-items: center;">
+                                <label
+                                    style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+                                    <input type="radio" name="ebs-trigger-method" value="auto" checked
+                                        style="width: 14px; height: 14px; cursor: pointer;"> 自动
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+                                    <input type="radio" name="ebs-trigger-method" value="manual"
+                                        style="width: 14px; height: 14px; cursor: pointer;"> 手动
+                                </label>
+                            </div>
                         </div>
                     </div>
 
@@ -11088,6 +11105,14 @@
             document.querySelector('.ebs-tab-item[data-tab="public"]').classList.add('active');
             document.getElementById('ebs-tab-pane-public').classList.add('active');
 
+            // Load or Reset Trigger Method
+            const savedTriggerMethod = (row && row.dataset.triggerMethod) ? row.dataset.triggerMethod : 'auto';
+            const triggerRadio = document.querySelector(`input[name="ebs-trigger-method"][value="${savedTriggerMethod}"]`);
+            if (triggerRadio) {
+                triggerRadio.checked = true;
+                triggerRadio.dispatchEvent(new Event('change'));
+            }
+
             switchView(viewEditBulkSurcharge, 'nav-bulk-surcharge');
         };
 
@@ -11192,6 +11217,21 @@
         document.getElementById('ebs-code')?.addEventListener('change', checkEbsConflict);
         document.getElementById('ebs-status')?.addEventListener('change', checkEbsConflict);
 
+        // --- Bulk Surcharge Trigger Method Linkage ---
+        document.querySelectorAll('input[name="ebs-trigger-method"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const tabsHeader = document.querySelector('.ebs-tabs-header');
+                const tabContent = document.querySelector('.ebs-tab-content');
+                if (e.target.value === 'manual') {
+                    if (tabsHeader) tabsHeader.style.display = 'none';
+                    if (tabContent) tabContent.style.display = 'none';
+                } else {
+                    if (tabsHeader) tabsHeader.style.display = 'flex';
+                    if (tabContent) tabContent.style.display = 'block';
+                }
+            });
+        });
+
         document.getElementById('btn-save-ebs')?.addEventListener('click', () => {
             const code = document.getElementById('ebs-code').value;
             const name = document.getElementById('ebs-name').value;
@@ -11252,6 +11292,10 @@
                 `;
                 viewBulkSurchargeTable.appendChild(targetRow);
             }
+
+            // --- Capture Trigger Method ---
+            const triggerMethod = document.querySelector('input[name="ebs-trigger-method"]:checked').value;
+            targetRow.dataset.triggerMethod = triggerMethod;
 
             // --- Collect Data ---
 
@@ -12357,7 +12401,7 @@
 
             const modal = document.getElementById('modal-process-task');
             const tbody = document.getElementById('modal-process-tbody');
-            
+
             // Header
             document.getElementById('modal-process-order-no').textContent = app.orderNo || 'SO24041201';
 
@@ -12365,7 +12409,7 @@
             const actions = document.getElementById('modal-process-actions');
             const approveBtn = document.getElementById('btn-modal-approve-task');
             const rejectBtn = document.getElementById('btn-modal-reject-task');
-            
+
             if (isReadOnly) {
                 approveBtn.style.display = 'none';
                 rejectBtn.style.display = 'none';
@@ -12393,7 +12437,7 @@
             // Summary Calculations
             const waiverAmount = parseFloat(app.amount);
             const incomeBase = 5000; // Mock total income
-            
+
             // Pre-Waiver
             const preCompProfit = 850.50;
             const preCompMargin = (preCompProfit / incomeBase * 100).toFixed(2);
@@ -12408,7 +12452,7 @@
 
             // Fill Summary
             document.getElementById('summary-waiver-total').textContent = `￥${waiverAmount.toFixed(2)}`;
-            
+
             document.getElementById('pre-company-profit').textContent = `￥${preCompProfit.toFixed(2)}`;
             document.getElementById('pre-company-margin').textContent = `${preCompMargin}%`;
             document.getElementById('pre-sales-profit').textContent = `￥${preSalesProfit.toFixed(2)}`;
@@ -13119,15 +13163,19 @@
         let selectedSurcharges = []; // [{ type, currency, amount, unit }]
         const btnAddSurcharge = document.getElementById('btn-add-fba-surcharge');
         const surchargeContainer = document.getElementById('fba-surcharge-items-container');
-        const surchargeTypes = [
-            "资料不齐附加费",
-            "资料不齐超功率没装UN箱附加费",
-            "无资料附加费",
-            "无资料超功率没装UN箱附加费",
-            "产品附加费"
-        ];
+
+        const getManualSurchargeNames = () => {
+            if (!viewBulkSurchargeTable) return [];
+            const rows = Array.from(viewBulkSurchargeTable.querySelectorAll('tr'));
+            return rows.filter(row => {
+                const status = row.cells[11]?.textContent.trim();
+                const triggerMethod = row.dataset.triggerMethod;
+                return status === '已启用' && triggerMethod === 'manual';
+            }).map(row => row.cells[2]?.textContent.trim()).filter(Boolean);
+        };
 
         const renderSurchargeList = () => {
+            const surchargeTypes = getManualSurchargeNames();
             if (!surchargeContainer) return;
             if (selectedSurcharges.length === 0) {
                 surchargeContainer.innerHTML = '<div style="color: #bfbfbf; font-size: 12px; padding: 8px 4px;">暂未添加附加费项，点击右上角“+”号添加</div>';
@@ -13156,9 +13204,7 @@
                         <input type="number" step="0.01" value="${item.amount}" oninput="updateSurcharge(${index}, 'amount', this.value)" placeholder="请输入金额"
                             style="flex: 1; border: none; background: transparent; height: 100%; padding: 0 12px; font-size: 13px; outline: none;">
                         <div style="display: flex; height: 100%; border-left: 1px solid #dcdfe6; background: #f5f7fa;">
-                            <div onclick="updateSurcharge(${index}, 'unit', '/ KG')" style="display: flex; align-items: center; padding: 0 12px; border-right: 1px solid #dcdfe6; cursor: pointer; font-size: 12px; color: ${item.unit === '/ KG' ? '#1890ff' : '#606266'}; font-weight: ${item.unit === '/ KG' ? '600' : 'normal'}; background: ${item.unit === '/ KG' ? '#e6f7ff' : 'transparent'}; transition: all 0.3s;">/ KG</div>
-                            <div onclick="updateSurcharge(${index}, 'unit', '/ CBM')" style="display: flex; align-items: center; padding: 0 12px; border-right: 1px solid #dcdfe6; cursor: pointer; font-size: 12px; color: ${item.unit === '/ CBM' ? '#1890ff' : '#606266'}; font-weight: ${item.unit === '/ CBM' ? '600' : 'normal'}; background: ${item.unit === '/ CBM' ? '#e6f7ff' : 'transparent'}; transition: all 0.3s;">/ CBM</div>
-                            <div onclick="updateSurcharge(${index}, 'unit', '综合')" style="display: flex; align-items: center; padding: 0 12px; cursor: pointer; font-size: 12px; color: ${item.unit === '综合' ? '#1890ff' : '#606266'}; font-weight: ${item.unit === '综合' ? '600' : 'normal'}; background: ${item.unit === '综合' ? '#e6f7ff' : 'transparent'}; transition: all 0.3s;">综合</div>
+                            <div onclick="updateSurcharge(${index}, 'unit', '/ KG')" style="display: flex; align-items: center; padding: 0 12px; cursor: pointer; font-size: 12px; color: ${item.unit === '/ KG' ? '#1890ff' : '#606266'}; font-weight: ${item.unit === '/ KG' ? '600' : 'normal'}; background: ${item.unit === '/ KG' ? '#e6f7ff' : 'transparent'}; transition: all 0.3s;">/ KG</div>
                         </div>
                     </div>
                 `;
@@ -13195,6 +13241,11 @@
 
         if (btnAddSurcharge) {
             btnAddSurcharge.addEventListener('click', () => {
+                const surchargeTypes = getManualSurchargeNames();
+                if (surchargeTypes.length === 0) {
+                    alert('请先在“附加费配置”中创建并启用“手动”触发方式的附加费。');
+                    return;
+                }
                 if (selectedSurcharges.length >= surchargeTypes.length) {
                     alert('已添加所有可选的附加费类型');
                     return;
@@ -13534,8 +13585,10 @@
     <div id="modal-process-task" class="ebs-selection-modal-overlay">
         <div class="ebs-selection-modal" style="width: 1000px; max-height: 90vh;">
             <div class="ebs-selection-modal-header">
-                <span class="ebs-selection-modal-title">任务处理 - 工作单号: <span id="modal-process-order-no" style="color: #1677ff;"></span></span>
-                <span class="close-modal" id="close-process-task-modal" style="cursor: pointer; font-size: 20px;">&times;</span>
+                <span class="ebs-selection-modal-title">任务处理 - 工作单号: <span id="modal-process-order-no"
+                        style="color: #1677ff;"></span></span>
+                <span class="close-modal" id="close-process-task-modal"
+                    style="cursor: pointer; font-size: 20px;">&times;</span>
             </div>
             <div class="ebs-selection-modal-content">
                 <table class="table" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
@@ -13580,19 +13633,23 @@
                             <div class="ebs-group-title" style="color: #52c41a;">减免后 (Post-Waiver)</div>
                             <div class="ebs-stat-row">
                                 <span class="ebs-stat-label">公司利润:</span>
-                                <span class="ebs-stat-value" id="post-company-profit" style="color: #52c41a; font-weight: bold;">￥0.00</span>
+                                <span class="ebs-stat-value" id="post-company-profit"
+                                    style="color: #52c41a; font-weight: bold;">￥0.00</span>
                             </div>
                             <div class="ebs-stat-row">
                                 <span class="ebs-stat-label">公司毛利率:</span>
-                                <span class="ebs-stat-value" id="post-company-margin" style="color: #52c41a; font-weight: bold;">0.00%</span>
+                                <span class="ebs-stat-value" id="post-company-margin"
+                                    style="color: #52c41a; font-weight: bold;">0.00%</span>
                             </div>
                             <div class="ebs-stat-row">
                                 <span class="ebs-stat-label">业务员利润:</span>
-                                <span class="ebs-stat-value" id="post-sales-profit" style="color: #52c41a; font-weight: bold;">￥0.00</span>
+                                <span class="ebs-stat-value" id="post-sales-profit"
+                                    style="color: #52c41a; font-weight: bold;">￥0.00</span>
                             </div>
                             <div class="ebs-stat-row">
                                 <span class="ebs-stat-label">业务员毛利率:</span>
-                                <span class="ebs-stat-value" id="post-sales-margin" style="color: #52c41a; font-weight: bold;">0.00%</span>
+                                <span class="ebs-stat-value" id="post-sales-margin"
+                                    style="color: #52c41a; font-weight: bold;">0.00%</span>
                             </div>
                         </div>
                     </div>
@@ -13610,13 +13667,15 @@
                     <!-- Right: Review Opinion -->
                     <div class="ebs-opinion-section">
                         <label class="ebs-opinion-label">审核意见</label>
-                        <textarea id="modal-process-opinion" class="ebs-opinion-textarea" placeholder="请输入审核意见..." style="height: 180px;"></textarea>
+                        <textarea id="modal-process-opinion" class="ebs-opinion-textarea" placeholder="请输入审核意见..."
+                            style="height: 180px;"></textarea>
                     </div>
                 </div>
             </div>
             <div class="ebs-selection-modal-footer" id="modal-process-actions">
                 <button class="ebs-btn ebs-btn-default" id="btn-cancel-process-task">取消</button>
-                <button class="ebs-btn" id="btn-modal-reject-task" style="background: #fff2f0; border-color: #ffccc7; color: #ff4d4f;">拒绝</button>
+                <button class="ebs-btn" id="btn-modal-reject-task"
+                    style="background: #fff2f0; border-color: #ffccc7; color: #ff4d4f;">拒绝</button>
                 <button class="ebs-btn ebs-btn-primary" id="btn-modal-approve-task">同意</button>
             </div>
         </div>
@@ -13952,7 +14011,9 @@
                             <td style="padding: 12px;">2024-04-12 14:30:22</td>
                             <td style="padding: 12px;">管理员</td>
                             <td style="padding: 12px;">
-                                <button class="ebs-btn" style="padding: 4px 8px; font-size: 12px; background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7;" onclick="alert('打单已取消')">取消打单</button>
+                                <button class="ebs-btn"
+                                    style="padding: 4px 8px; font-size: 12px; background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7;"
+                                    onclick="alert('打单已取消')">取消打单</button>
                             </td>
                         </tr>
                         <tr style="border-bottom: 1px solid #f0f0f0;">
@@ -13961,7 +14022,9 @@
                             <td style="padding: 12px;">2024-04-12 14:31:05</td>
                             <td style="padding: 12px;">管理员</td>
                             <td style="padding: 12px;">
-                                <button class="ebs-btn" style="padding: 4px 8px; font-size: 12px; background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7;" onclick="alert('打单已取消')">取消打单</button>
+                                <button class="ebs-btn"
+                                    style="padding: 4px 8px; font-size: 12px; background: #fff2f0; color: #ff4d4f; border: 1px solid #ffccc7;"
+                                    onclick="alert('打单已取消')">取消打单</button>
                             </td>
                         </tr>
                     </tbody>
